@@ -407,7 +407,7 @@ class APPNP:
 
         # pass the node features through the base model
         feature_layer = x_t
-        for layer in base_model.layers[1:-1]:
+        for layer in base_model.layers[1:]:
             feature_layer = layer(feature_layer)
 
         h_layer = feature_layer

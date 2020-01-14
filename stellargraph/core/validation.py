@@ -14,15 +14,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# This file contains global attributes used throughout stellargraph
 
-FEATURE_ATTR_NAME = "feature"
-TARGET_ATTR_NAME = "target"
-TYPE_ATTR_NAME = "label"
-UNKNOWN_TARGET_ATTRIBUTE = "-1"
-NODE_TYPE_DEFAULT = "default"
-EDGE_TYPE_DEFAULT = "default"
+def comma_sep(values):
+    return ", ".join(str(x) for x in values)
 
-SOURCE = "source"
-TARGET = "target"
-WEIGHT = "weight"
+
+def require_dataframe_has_columns(name, df, columns):
+    if not set(columns).issubset(df.columns):
+        raise ValueError(
+            f"{name}: expected {comma_sep(columns)} columns, found: {comma_sep(df.columns)}"
+        )
